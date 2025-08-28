@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Design System - Base Template Project
+All colors, gradients, fonts, and animations defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    /* Modern primary - Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 217 91% 70%;
+
+    /* Modern secondary - Purple */
+    --secondary: 253 91% 67%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted colors */
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    /* Accent colors */
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220 8.9% 46.1%;
+
+    /* Destructive colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border and input */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    /* Success colors */
+    --success: 142 76% 36%;
+    --success-foreground: 355 100% 97%;
+
+    /* Warning colors */
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(253, 91%, 67%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 14%, 96%), hsl(220, 14%, 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(253, 91%, 67%) 50%, hsl(142, 76%, 56%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 8px 10px -6px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.3);
+
+    /* Animations */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Base colors - Dark mode */
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+
+    /* Card system - Dark mode */
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+
+    /* Popover system - Dark mode */
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+
+    /* Primary colors - Dark mode */
+    --primary: 217 91% 60%;
+    --primary-foreground: 224 71.4% 4.1%;
+    --primary-glow: 217 91% 70%;
+
+    /* Secondary colors - Dark mode */
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+
+    /* Muted colors - Dark mode */
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    /* Accent colors - Dark mode */
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+
+    /* Destructive colors - Dark mode */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    /* Border and input - Dark mode */
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+
+    /* Success colors - Dark mode */
+    --success: 142 76% 36%;
+    --success-foreground: 355 100% 97%;
+
+    /* Warning colors - Dark mode */
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+
+    /* Gradients - Dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(253, 91%, 67%));
+    --gradient-subtle: linear-gradient(180deg, hsl(215, 28%, 17%), hsl(215, 28%, 19%));
+    --gradient-hero: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(253, 91%, 67%) 50%, hsl(142, 76%, 56%) 100%);
+
+    /* Shadows - Dark mode */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -4px hsl(0 0% 0% / 0.3);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.3), 0 8px 10px -6px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.4);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* Gradient text utility */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Animated background */
+  .bg-animated {
+    background: var(--gradient-hero);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
