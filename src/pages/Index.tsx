@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useAuth } from "@/contexts/AuthContext";
 import { 
   Code2, 
   Users, 
@@ -16,7 +17,8 @@ import {
   CheckCircle,
   ArrowRight,
   Github,
-  ExternalLink
+  ExternalLink,
+  LogIn
 } from "lucide-react";
 
 const features = [
@@ -67,6 +69,7 @@ const techStack = [
 
 export default function Index() {
   const [activeDemo, setActiveDemo] = useState<string | null>(null);
+  const { user } = useAuth();
 
   return (
     <div className="min-h-screen">
@@ -80,22 +83,33 @@ export default function Index() {
             </Badge>
             
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-white">
-              ProjetoBase
+              Genesis Base
               <span className="block text-3xl lg:text-4xl font-normal text-white/90 mt-2">
-                Modelo React Moderno
+                Modelo React Moderno com Supabase
               </span>
             </h1>
             
             <p className="text-xl lg:text-2xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Inicie seu próximo projeto com este modelo abrangente de React + TypeScript.
-              Construído com ferramentas modernas e melhores práticas.
+              Sistema completo com autenticação, banco de dados e CRUD.
+              Construído com React, TypeScript, Tailwind e Supabase.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="glass hover:glow transition-all duration-300 text-white border border-white/20">
-                <Github className="h-5 w-5 mr-2" />
-                Ver no GitHub
-              </Button>
+              {user ? (
+                <Link to="/posts">
+                  <Button size="lg" className="glass hover:glow transition-all duration-300 text-white border border-white/20">
+                    <FileText className="h-5 w-5 mr-2" />
+                    Ir para Posts
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/auth">
+                  <Button size="lg" className="glass hover:glow transition-all duration-300 text-white border border-white/20">
+                    <LogIn className="h-5 w-5 mr-2" />
+                    Entrar / Cadastrar
+                  </Button>
+                </Link>
+              )}
               <Button variant="outline" size="lg" className="glass text-white border-white/30 hover:bg-white/10">
                 <ExternalLink className="h-5 w-5 mr-2" />
                 Demonstração ao Vivo

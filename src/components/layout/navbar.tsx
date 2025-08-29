@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Code2, Users, FileText, MessageSquare } from "lucide-react";
+import { Menu, Code2, Users, FileText, MessageSquare, LogIn, LogOut, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navigation = [
   { name: "Início", href: "/", icon: Code2 },
@@ -15,6 +16,7 @@ const navigation = [
 export function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -25,7 +27,7 @@ export function Navbar() {
             <Code2 className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="font-bold text-xl bg-gradient-primary bg-clip-text text-transparent">
-            ProjetoBase
+            Genesis Base
           </span>
         </Link>
 
@@ -49,6 +51,29 @@ export function Navbar() {
               </Link>
             );
           })}
+          
+          {/* Auth Buttons */}
+          <div className="ml-4 flex items-center gap-2">
+            {user ? (
+              <>
+                <Button variant="ghost" size="sm" className="gap-2">
+                  <User className="h-4 w-4" />
+                  {user.email}
+                </Button>
+                <Button variant="outline" size="sm" onClick={signOut}>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sair
+                </Button>
+              </>
+            ) : (
+              <Link to="/auth">
+                <Button variant="default" size="sm">
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Entrar
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
 
         {/* Navegação Mobile */}
@@ -66,7 +91,7 @@ export function Navbar() {
                   <Code2 className="h-5 w-5 text-primary-foreground" />
                 </div>
                 <span className="font-bold text-lg bg-gradient-primary bg-clip-text text-transparent">
-                  ProjetoBase
+                  Genesis Base
                 </span>
               </div>
               <div className="border-t pt-4">
@@ -92,6 +117,36 @@ export function Navbar() {
                     </Link>
                   );
                 })}
+                
+                {/* Mobile Auth */}
+                <div className="border-t pt-4 mt-4">
+                  {user ? (
+                    <>
+                      <div className="px-2 py-2 text-sm text-muted-foreground">
+                        Conectado como: {user.email}
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full justify-start"
+                        onClick={() => {
+                          signOut();
+                          setIsOpen(false);
+                        }}
+                      >
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Sair
+                      </Button>
+                    </>
+                  ) : (
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      <Button variant="default" size="sm" className="w-full justify-start">
+                        <LogIn className="h-4 w-4 mr-2" />
+                        Entrar
+                      </Button>
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </SheetContent>
